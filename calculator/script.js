@@ -30,18 +30,20 @@ window.addEventListener('load', function () {
             }
 
         resultBox.innerHTML = res;
-        btnRun.setAttribute('disabled', true);
+        // btnRun.setAttribute('disabled', true); Через атрибуты работать неверно, потому что они не связаны с элементами ДОМ
+        btnRun.disabled = true;
     });
     
     inp1.addEventListener('input', cleanInput);
     inp2.addEventListener('input', cleanInput);
-    
+
     inp1.addEventListener('input', enableBtn);
     inp2.addEventListener('input', enableBtn);
     operation.addEventListener('input', enableBtn);
 
     function enableBtn() {
-        btnRun.removeAttribute('disabled');
+        // btnRun.removeAttribute('disabled'); Через атрибуты работать неверно, потому что они не связаны с элементами ДОМ
+        btnRun.disabled = false;
     }
     function cleanInput() {
         this.value = this.value.replace(/[^\d]/g, '');
