@@ -9,37 +9,41 @@ window.addEventListener('load', function () {
     btnRun.addEventListener('click', function () {
         let res;
         let op = operation.value;
+        let num1 = parseInt(inp1.value);
+        let num2 = parseInt(inp2.value);
         switch (op) {
             case '+':
-                res = parseInt(inp1.value.replace(/[^+\d]/g, '')) + parseInt(inp2.value);
-                resultBox.innerHTML = res;
+                res = num1 + num2;
                 break;
             case '-':
-                res = parseInt(inp1.value) - parseInt(inp2.value);
-                resultBox.innerHTML = res;
+                res = num1 - num2;
                 break;
             case '*':
-                res = parseInt(inp1.value) * parseInt(inp2.value);
-                resultBox.innerHTML = res;
+                res = num1 * num2;
                 break;
             case '/':
-                res = parseInt(inp1.value) / parseInt(inp2.value);
-                resultBox.innerHTML = res;
+                res = num1 / num2;
                 break;
             default:
                 res = 0;
                 break;
-        }
+            }
+
+        resultBox.innerHTML = res;
         btnRun.setAttribute('disabled', true);
     });
+    
+    inp1.addEventListener('input', cleanInput);
+    inp2.addEventListener('input', cleanInput);
+    
+    inp1.addEventListener('input', enableBtn);
+    inp2.addEventListener('input', enableBtn);
+    operation.addEventListener('input', enableBtn);
 
-    inp1.addEventListener('input', function () {
-        inp1.value = inp1.value.replace(/[^\d]/g, '');
+    function enableBtn() {
         btnRun.removeAttribute('disabled');
-    });
-    inp2.addEventListener('input', function () {
-        inp2.value = inp1.value.replace(/[^\d]/g, '');
-        btnRun.removeAttribute('disabled');
-    });
-
+    }
+    function cleanInput() {
+        this.value = this.value.replace(/[^\d]/g, '');
+    }
 });
