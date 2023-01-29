@@ -1,19 +1,25 @@
 window.addEventListener('load', function () {
 
-    let form = document.querySelector('form');
+    let form = document.querySelector('.form');
     let inputs = document.querySelectorAll('.check');
 
     form.addEventListener('submit', function (e) {
 
+        let hasError = false;
+
         for (let i = 0; i < inputs.length; i++) {
             if (inputs[i].value.length == 0) {
                 inputs[i].classList.add('err');
-                e.preventDefault();
+                hasError = true;
             }
+        }
+
+        if (hasError) {
+            e.preventDefault();
         }
     });
 
-    form.addEventListener('click', function(e) {
+    form.addEventListener('click', function (e) {
         // console.log(e.target);
         removeErr(e.target);
     });
