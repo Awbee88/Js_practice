@@ -1,0 +1,12 @@
+html, body{
+    margin: 40px;
+}
+
+.err{
+    outline: 1px solid red;
+}
+
+.errText {
+    color: red;
+    margin: 0;
+}
