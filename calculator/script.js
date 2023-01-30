@@ -6,12 +6,25 @@ window.addEventListener('load', function () {
     let btnRun = document.querySelector('.btnRun');
     let resultBox = document.querySelector('.result');
     let operation = document.querySelector('.operation');
+    let mathOps = {
+        sum: (a, b) => a + b,
+        sub: (a, b) => a - b,
+        mult: (a, b) => a * b,
+        div: (a, b) => a / b
+    }
 
     btnRun.addEventListener('click', function () {
         let res;
         let op = operation.value;
         let num1 = parseInt(inp1.value);
         let num2 = parseInt(inp2.value);
+
+        res = mathOps[op](num1, num2);
+        resultBox.innerHTML = res;
+
+
+        // Старая версия
+        /*
         switch (op) {
             case '+':
                 res = num1 + num2;
@@ -31,6 +44,8 @@ window.addEventListener('load', function () {
         }
 
         resultBox.innerHTML = res;
+        */
+
         // btnRun.setAttribute('disabled', true); Через атрибуты работать неверно, потому что они не связаны с элементами ДОМ
         btnRun.disabled = true;
     });
