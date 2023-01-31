@@ -14,15 +14,15 @@ window.addEventListener('load', function () {
 
         for (let i = 0; i < inputs.length; i++) {
             let reg = dataValids[inputs[i].dataset.valid][0];
-            // let errText = dataValids[inputs[i].dataset.valid][1];
+            let errText = dataValids[inputs[i].dataset.valid][1];
             let tagErrText = document.createElement('div');
 
-            if (!reg.test(inputs[i].value)) {
+            if (reg !== undefined && !reg.test(inputs[i].value)) {
                 inputs[i].classList.add('err');
                 if (!inputs[i].nextElementSibling.classList.contains('errText')) {
                     form.insertBefore(tagErrText, inputs[i].nextElementSibling);
                     tagErrText.classList.add('errText');
-                    tagErrText.innerText = dataValids[inputs[i].dataset.valid][1];
+                    tagErrText.innerText = errText;
                 }
                 hasError = true;
             }
