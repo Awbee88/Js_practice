@@ -38,10 +38,8 @@ html, body{
     right: 20px;
     /* расстояние от нижнего края окна браузера */
     bottom: 30px;
-    /* скругление верхнего левого угла */
-    border-top-left-radius: 8px;
-    /* скругление верхнего правого угла */
-    border-top-right-radius: 8px;
+    /* скругление угла */
+    border-radius: 8px;
     /* вид курсора */
     cursor: pointer;
     /* отображение элемента как flex */

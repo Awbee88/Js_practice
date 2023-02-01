@@ -3,24 +3,34 @@ window.addEventListener('load', function () {
 	let content = document.querySelector('.content');
 	let marginTop = parseInt(getComputedStyle(content).marginTop, 10);
 
+
+
 	delegate(menu, 'a', 'click', function (e) {
 		e.preventDefault();
 
 		let target = document.querySelector(this.hash);
 		let top = target.getBoundingClientRect().top + window.pageYOffset;
-		console.log(target.getBoundingClientRect().top);
 		scrollToElem(top, marginTop);
 		setActiveMenuItem(menu, this);
 	});
 
-	// let hash = window.location.hash;
-	// let autoTarget = hash.length > 0 ? document.querySelector(hash) : null;
+	window.addEventListener('scroll', () => {
+		let menuLinks = menu.querySelectorAll('a');
+		let titleItems = document.querySelectorAll('h2');
+		for (let i = titleItems.length - 1; i > -1; i--) {
+			// console.log(titleItems[i]);
+			let titleOffset = titleItems[i].getBoundingClientRect().top + window.pageYOffset - 200;
+			if (window.scrollY > titleOffset) {
+				menuLinks.forEach(menuLink => menuLink.classList.remove('menu__link-active'));
+				menuLinks[i].classList.add('menu__link-active');
+				break;
+			} else {
+				continue;
+			}
+		}
+	});
 
-	// if (autoTarget !== null) {
-	// 	let posAutoTarget = autoTarget.getBoundingClientRect().top + window.pageYOffset;
-	// 	scrollToElem(posAutoTarget, marginTop);
-	// 	setActiveMenuItem(menu, menu.querySelector(`[href$="${hash}"]`));
-	// }
+
 
 	const btnUp = {
 		el: document.querySelector('.btn-up'),
@@ -45,7 +55,6 @@ window.addEventListener('load', function () {
 				// переместим в начало страницы
 				window.scrollTo({
 					top: 0,
-					left: 0,
 					behavior: 'smooth'
 				});
 			}
