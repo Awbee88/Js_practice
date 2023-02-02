@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700;1,900&display=swap');
+
+.content {
+    width: 300px;
+    height: 600px;
+    font-family: 'Roboto', sans-serif;
+}
+.page-one {
+    background-image: url(../images/bg.svg);
+    width: 100%;
+    height: 100%;
+    font-style: italic;
+    color: #2D8957;
+    text-align: center;
+    transition: 1s;
+}
+
+.page-one-title {
+    font-size: 32px;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding-top: 39.82px;
+    text-shadow: 0.91px 0.91px 3.64px #3CBA85;
+    -webkit-text-stroke: 1px #ffffff;
+    letter-spacing: -1px;
+}
+.page-one-text {
+    font-size: 16px;
+    padding-top: 10px;
+}
+.page-one-boldtext {
+    font-weight: 700;
+}
+
+.page-one-img {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.img-item {
+    margin-bottom: 15px;
+    padding: 0 8px;
+}
+
+
+.page-two {
+    background-image: url(../images/bg\ 2.svg);
+    width: 100%;
+    height: 100%;
+    font-style: italic;
+    color: #2D8957;
+    text-align: center;
+}
+
+.page-two-title-1 {
+    font-size: 35px;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 75px 0 20px 0;
+    width: 265px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 0.91px 0.91px 3.64px #3CBA85;
+    -webkit-text-stroke: 1px #ffffff;
+    letter-spacing: -1px;
+}
+
+.page-two-title-span {
+    font-size: 28px;
+}
+
+.page-two-button {
+    background-image: linear-gradient(to bottom, #F1F9B7, #C6EC9E);
+    font-size: 26px;
+    font-weight: 700;
+    font-style: italic;
+    color: #2D8957;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 20px;
+    width: 133px;
+    border: 1px solid #ffffff;
+}
+
+.scale {
+    transition: 1s;
+}
+.scale:hover {
+    transform: scale(1.1);
+}
+
+
+.open{
+    animation: fade 2s;
+}
+
+.closing{
+    display: none;
+	/* animation: hide 2s; */
+}
+
+@keyframes fade{
+	from{ opacity: 0; }
+	to{ opacity: 1; }
+}
+
+@keyframes hide{
+	from{ opacity: 1; }
+	to{ opacity: 0; }
+}
