@@ -4,6 +4,7 @@ window.addEventListener('load', function () {
 	let marginTop = parseInt(getComputedStyle(content).marginTop, 10);
 
 
+	// Функция, которая подсвечивает заголовки меню и скролит до них
 
 	delegate(menu, 'a', 'click', function (e) {
 		e.preventDefault();
@@ -11,21 +12,18 @@ window.addEventListener('load', function () {
 		let target = document.querySelector(this.hash);
 		let top = target.getBoundingClientRect().top + window.pageYOffset;
 		scrollToElem(top, marginTop);
-		setActiveMenuItem(menu, this);
+		// setActiveMenuItem(menu, this);
 	});
 
 	window.addEventListener('scroll', () => {
 		let menuLinks = menu.querySelectorAll('a');
 		let titleItems = document.querySelectorAll('h2');
 		for (let i = titleItems.length - 1; i > -1; i--) {
-			// console.log(titleItems[i]);
 			let titleOffset = titleItems[i].getBoundingClientRect().top + window.pageYOffset - 200;
+			let curMenuLink = menuLinks[i];
 			if (window.scrollY > titleOffset) {
-				menuLinks.forEach(menuLink => menuLink.classList.remove('menu__link-active'));
-				menuLinks[i].classList.add('menu__link-active');
+				setActiveMenuItem(menu, curMenuLink);
 				break;
-			} else {
-				continue;
 			}
 		}
 	});
